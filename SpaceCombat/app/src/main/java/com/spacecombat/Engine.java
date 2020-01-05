@@ -57,9 +57,7 @@ public class Engine implements ClickListener {
 				//System.out.println("COLLIDE");
 				collisionLoop();
 			}
-	33333333333]'
-			                                                                                                           nnnnnnnnnnnnm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ,mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'	}
-	}
+		}
 
 	private final boolean useInputStep = false;
 	private boolean canRun = true;
