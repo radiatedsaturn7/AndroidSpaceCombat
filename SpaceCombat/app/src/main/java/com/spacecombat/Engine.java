@@ -20,7 +20,7 @@ import com.spacecombat.weapons.Weapon;
 public class Engine implements ClickListener {
 	
 	public boolean created = false;
-	private String startingLevel = "level0";
+	private String startingLevel = "level1";
 	//private String startingLevel = "level12";
 	private boolean ready = false;
 	private static boolean isInvincibility = false;
@@ -45,7 +45,7 @@ public class Engine implements ClickListener {
 		public void run() {
 			while (true) {
 				//System.out.println("UPDATE");
-				// updateLoop();
+				 updateLoop();
 			}
 		}
 	}	
@@ -58,6 +58,7 @@ public class Engine implements ClickListener {
 				collisionLoop();
 			}
 		}
+	}
 
 	private final boolean useInputStep = false;
 	private boolean canRun = true;
@@ -77,8 +78,8 @@ public class Engine implements ClickListener {
 	private final int updateFrameRate = 32;
 
 	private final boolean guiPrintFrameRate = true;
-	private final boolean collisionPrintFrameRate = false;
-	private final boolean updatePrintFrameRate = false;
+	private final boolean collisionPrintFrameRate = true;
+	private final boolean updatePrintFrameRate = true;
 
 	private float guiLastTimeCheck = 0;
 	private float collisionLastTimeCheck = 0;
@@ -176,7 +177,6 @@ public class Engine implements ClickListener {
 	 * Here we do our drawing
 	 */
 	public void drawLoop() {
-
 		if (this.useGuiFrameRate) {
 			try {
 				Thread.sleep(1000 / this.drawFrameRate);
@@ -299,7 +299,7 @@ public class Engine implements ClickListener {
 
 	public void updateLoop() 
 	{		
-		
+		System.out.println("UPDATE");
 		Input.update();
 		if (this.useInputStep)
 		{
