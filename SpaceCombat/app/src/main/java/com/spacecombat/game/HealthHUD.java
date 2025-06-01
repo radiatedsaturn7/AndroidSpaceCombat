@@ -34,10 +34,12 @@ public class HealthHUD extends Component
 			GUI.drawText("Game Over", 220, 400, 20, 20);
 			GUI.drawText("Play Again?", 220, 420, 20, 20);
 			
-			if (GUI.drawText("Yes", 200, 440, 20, 20))
-			{
-				LevelLoader.loadLevel(LevelLoader.getLastLevelLoaded(),true);
-			}
+                        if (GUI.drawText("Yes", 200, 440, 20, 20))
+                        {
+                                // Reload the level but preserve persistent objects
+                                // so the player's upgrades survive the restart
+                                LevelLoader.loadLevel(LevelLoader.getLastLevelLoaded(),false);
+                        }
 			
 			if (GUI.drawText("No", 240, 440, 20, 20))
 			{
