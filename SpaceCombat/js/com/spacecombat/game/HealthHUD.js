@@ -1,0 +1,76 @@
+// Auto-converted from com/spacecombat/game/HealthHUD.java
+
+
+
+ export class HealthHUD extends Component
+{
+ HealthController healthController;
+
+ lastHealth = 0;
+ maxHealth = 0;
+ timeToPlay = 0.5f;
+ lastTime = 0.0f;
+ createGameOver = false;
+
+ constructor (HealthController healthController)
+	{
+ this.healthController = healthController;
+maxHealth = healthController.maxHealth;
+lastHealth = maxHealth;
+	}
+
+ void onGUI()
+	{
+ if (healthController.health <= 0)
+ {
+ GUI.drawText("Game Over", 220, 400, 20, 20);
+ GUI.drawText("Play Again?", 220, 420, 20, 20);
+
+ if (GUI.drawText("Yes", 200, 440, 20, 20))
+ {
+ // Reload the level but preserve persistent objects
+ // so the player's upgrades survive the restart
+ LevelLoader.loadLevel(LevelLoader.getLastLevelLoaded(),false);
+ }
+
+ if (GUI.drawText("No", 240, 440, 20, 20))
+ {
+ Engine.exit();
+ }
+ }
+	}
+
+ void update ()
+	{
+ health = healthController.health;
+
+ if (lastHealth != health && (health < lastHealth || health == maxHealth))
+ {
+ value = ((float)health) / ((float)maxHealth);
+ value *= 10;
+ floor = (int) Math.floor(value);
+ floor *= 10;
+ percentage = floor;
+ gameObject.playAnimation(percentage+"%");
+	lastTime = Time.getTime();
+ }
+
+ if (Time.getTime() > lastTime + timeToPlay)
+ {
+ gameObject.playAnimation("none");
+ }
+
+lastHealth = healthController.health;
+	}
+
+ dir = new Vector2(0,1);
+ void collide( GameObject whatIHit)
+	{
+ if (!whatIHit.hasTag(this.gameObject.getTags()))
+ {
+ dir.x = gameObject.transform.position.x - whatIHit.transform.position.x;
+ dir.y = gameObject.transform.position.y - whatIHit.transform.position.y;
+ gameObject.transform.rotation.x = dir.getAngle() + 180;
+ }
+	}
+}

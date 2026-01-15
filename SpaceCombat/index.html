@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Space Combat - Browser Port</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hud">
+        <div class="hud__title">
+          <h1>Space Combat</h1>
+          <p>Browser Port (Converted from Android Java)</p>
+        </div>
+        <div class="hud__stats">
+          <div>
+            <span class="label">Score</span>
+            <span id="score">0</span>
+          </div>
+          <div>
+            <span class="label">Hull</span>
+            <span id="health">100</span>%
+          </div>
+          <div>
+            <span class="label">Wave</span>
+            <span id="wave">1</span>
+          </div>
+          <div>
+            <span class="label">Weapon</span>
+            <span id="weapon">Laser</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="stage">
+        <canvas
+          id="game"
+          width="1440"
+          height="900"
+          aria-label="Space Combat game"
+        ></canvas>
+        <div class="overlay" id="overlay">
+          <div class="panel">
+            <h2>Mission Brief</h2>
+            <p>
+              Protect the fleet. Sweep enemies, gather power-ups, and survive the
+              boss waves.
+            </p>
+            <ul>
+              <li>Move: Mouse / Touch or WASD / Arrow Keys</li>
+              <li>Fire: Space or Tap / Click</li>
+              <li>Swap Weapon: 1-4</li>
+              <li>Pause: P</li>
+            </ul>
+            <button id="start">Launch</button>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Assets sourced from <code>app/src/main/res/drawable</code>. Java logic
+          converted to JavaScript modules in <code>js/</code>.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="game.js"></script>
+  </body>
+</html>
