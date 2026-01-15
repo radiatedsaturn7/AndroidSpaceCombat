@@ -1,0 +1,10 @@
+{
+  "name": "space-combat-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web port of the Android Space Combat game",
+  "scripts": {
+    "prepare:playwright": "npx playwright install --with-deps",
+    "test:dashboard": "npm run prepare:playwright && node tools/test-runner/run.js"
+  }
+}
